@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adressed", "Adressed\Adressed.csproj", "{24FDE5B4-95F5-4B03-9ADF-1C5E22F65C99}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SASetup", "SASetup\SASetup.vdproj", "{CE75D453-240F-4703-9EB2-6E6CBB83744B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24FDE5B4-95F5-4B03-9ADF-1C5E22F65C99}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{24FDE5B4-95F5-4B03-9ADF-1C5E22F65C99}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{24FDE5B4-95F5-4B03-9ADF-1C5E22F65C99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24FDE5B4-95F5-4B03-9ADF-1C5E22F65C99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE75D453-240F-4703-9EB2-6E6CBB83744B}.Debug|Any CPU.ActiveCfg = Release
+		{CE75D453-240F-4703-9EB2-6E6CBB83744B}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5991EA0C-26DC-4C6C-BB0E-4C88EA56AC9F}
+	EndGlobalSection
+EndGlobal
