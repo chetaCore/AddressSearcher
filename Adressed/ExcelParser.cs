@@ -1,47 +1,51 @@
 ﻿using OfficeOpenXml;
 
-namespace Adressed
+namespace Addressed
 {
-    public class ExcelPars
+    public class ExcelParser
     {
         public static (List<Coordinates>, FileInfo) ReadExcelData()
         {
+            // Получение пути к файлу
+            string filePath = GetFilePath();
 
-            string filePath = InputPath();
-
-            List<Coordinates> coords = new();
+            // Создание объекта FileInfo для указанного пути
             FileInfo file = new FileInfo(filePath);
 
             Console.WriteLine(file);
 
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
+            List<Coordinates> coordinatesList = new List<Coordinates>();
+
+            // Использование блока using для автоматического закрытия и освобождения ресурсов ExcelPackage
             using (ExcelPackage package = new ExcelPackage(file))
             {
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[0]; // Первый лист в документе
 
                 int rowCount = worksheet.Dimension.Rows;
 
+                // Чтение данных из каждой строки и добавление координат в список
                 for (int row = 2; row <= rowCount; row++)
                 {
                     string latitude = worksheet.Cells[row, 1].Value?.ToString(); // Широта в первом столбце
                     string longitude = worksheet.Cells[row, 2].Value?.ToString(); // Долгота во втором столбце
 
-                    Coordinates coord = new();
-
                     if (!string.IsNullOrEmpty(latitude) && !string.IsNullOrEmpty(longitude))
                     {
-                        coord.Latitude = latitude;
-                        coord.Longitude = longitude;
-                        coords.Add(coord);
+                        coordinatesList.Add(new Coordinates
+                        {
+                            Latitude = latitude,
+                            Longitude = longitude
+                        });
                     }
                 }
             }
 
-            return (coords, file);
+            return (coordinatesList, file);
         }
 
-        private static string InputPath()
+        private static string GetFilePath()
         {
             string filePath = "";
 

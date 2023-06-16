@@ -1,9 +1,9 @@
 ﻿using OfficeOpenXml;
 using System.Text.RegularExpressions;
 
-namespace Adressed
+namespace Addressed
 {
-    public class CreateExelDocs
+    public class CreateExcelDocs
     {
         public static void Create(List<Address> addressList, FileInfo fileInfo)
         {
@@ -13,6 +13,7 @@ namespace Adressed
                 // Добавление нового листа в документ
                 var worksheet = package.Workbook.Worksheets.Add("Sheet1");
 
+                // Установка заголовков столбцов
                 worksheet.Cells[1, 1].Value = "Latitude";
                 worksheet.Cells[1, 2].Value = "Longitude";
                 worksheet.Cells[1, 3].Value = "Address";
@@ -20,11 +21,13 @@ namespace Adressed
                 // Запись каждой строки в отдельную ячейку столбца Excel
                 for (int i = 0; i < addressList.Count; i++)
                 {
+                    // Запись координат и адреса в соответствующие ячейки
                     worksheet.Cells[i + 2, 1].Value = addressList[i].Coordinates.Latitude;
                     worksheet.Cells[i + 2, 2].Value = addressList[i].Coordinates.Longitude;
                     worksheet.Cells[i + 2, 3].Value = addressList[i].Name;
                 }
 
+                // Получение корректного пути для сохранения файла
                 string filePath = GetValidFilePath();
 
                 // Сохранение файла

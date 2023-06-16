@@ -1,8 +1,8 @@
-﻿namespace Adressed
+﻿namespace Addressed
 {
     public class Coordinates
     {
-        public string Latitude;
-        public string Longitude;
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
     }
 }

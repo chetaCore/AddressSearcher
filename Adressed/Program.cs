@@ -1,21 +1,15 @@
-﻿using Adressed;
-
-List<Coordinates> coordinates;
-FileInfo fileInfo;
+﻿using Addressed;
 
 Console.WriteLine("Чтение excel файла");
-
-(coordinates, fileInfo) = ExcelPars.ReadExcelData();
-
+var (coordinates, fileInfo) = ExcelParser.ReadExcelData();
 Console.WriteLine("Чтение завершено");
 
-Console.WriteLine("Ожидание поиска всех адрессов");
-Task<List<Address>> task = SearchAdress.Search(coordinates);
-List<Address> result = await task;
+Console.WriteLine("Ожидание поиска всех адресов");
+List<Address> result = await SearchAddress.Search(coordinates);
 Console.WriteLine("Поиск окончен");
 
 Console.WriteLine("Начало создания excel документа");
-CreateExelDocs.Create(result, fileInfo);
+CreateExcelDocs.Create(result, fileInfo);
 Console.WriteLine("Программа завершила работу");
 
 Console.ReadLine();

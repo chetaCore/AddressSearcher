@@ -1,13 +1,13 @@
-﻿namespace Adressed
+﻿namespace Addressed
 {
     public class Address
     {
-        public string Name;
-        public Coordinates Coordinates;
+        public string Name { get; set; }
+        public Coordinates Coordinates { get; set; }
 
         public Address()
         {
-            Coordinates = new();
+            Coordinates = new Coordinates();
         }
     }
 }
